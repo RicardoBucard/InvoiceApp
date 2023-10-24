@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :users, only: %i[create index new] do
+    member do
+      get :confirm_email
+    end
+  end
+  root to: 'users#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get 'register', to: 'registers#new'
+  post 'register', to: 'registers#create'
 end
