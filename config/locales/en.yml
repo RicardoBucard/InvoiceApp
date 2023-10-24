@@ -1,33 +1,28 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+
+  logins:
+    authenticate_user:
+      authenticate_session:
+        success: "You've logged in successfully, welcome!"
+      auth_token_not_found: "Invalid token! Please check you email for the correct one"
+      unconfirmed_token: "Please activate your account by following the instructions in the account confirmation email you received to proceed"
+    logout:
+      logout_notice: "Your account has been successfully logged out"
+    new:
+      submit_button: "Log in"
+      token_label: "Auth Token"
+
+  registers:
+    new:
+      email_label: "Email"
+      submit_button: "Register"
+    create:
+      register_create_success: "Token validation link sent to your email"
+
+  users:
+    confirm_email:
+      confirm_success: "Welcome to the Invoice App! Your token has been validated. Please log in to continue"
+      user_not_found: "Sorry. User does not exist"
