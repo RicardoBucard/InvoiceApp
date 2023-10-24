@@ -47,6 +47,12 @@ gem 'slim-rails'
 gem 'simple_form'
 
 gem 'i18n'
+
+gem "font-awesome-sass", "~> 6.4.2"
+
+gem "bootstrap"
+
+gem "sassc-rails"
 # Use Sass to process CSS
 # gem 'sassc-rails'
 
