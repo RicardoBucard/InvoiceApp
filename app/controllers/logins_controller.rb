@@ -3,7 +3,7 @@ class LoginsController < ApplicationController
   skip_before_action :must_login
 
   def authenticate_user
-    user = find_user_by_auth_token(auth_token: params[:new][:auth_token])
+    user = find_user_by_auth_token(auth_token: params[:new][:auth_token].strip)
 
     redirect_to login_path, alert: t(".auth_token_not_found") and return unless user
     redirect_to login_path, alert: t(".unconfirmed_token") and return unless user.confirmed?
