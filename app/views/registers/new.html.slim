@@ -1,0 +1,3 @@
+= simple_form_for @user, url: register_path, method: :post do |f|
+  = f.input :email, label: t(".email_label"), required: true
+  = f.submit t(".submit_button")
