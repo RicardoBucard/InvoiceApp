@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_132954) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_204817) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirm_token"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 
