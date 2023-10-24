@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome <%= @user.email %>,</h1>
+    <p>Your token for login is <%= @user.auth_token %>.</p>
+    <p>Please, <%= link_to "Confirm email", confirm_email_user_url(@user)%> to be able to access Invoice App.</p>
+</html>
