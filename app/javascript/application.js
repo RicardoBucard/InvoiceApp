@@ -5,7 +5,6 @@ import "popper"
 import "bootstrap"
 
 Turbo.setConfirmMethod((message, element) => {
-  console.log(message, element)
   let dialog = document.getElementById("turbo-confirm")
   dialog.querySelector("p").textContent = message
   dialog.showModal()
