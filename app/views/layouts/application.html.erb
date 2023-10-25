@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= yield(:head) %>
   </head>
 
   <body>
@@ -17,5 +19,14 @@
     
     <%= render 'shared/flash' %>
     <%= yield %>
+    <dialog id="turbo-confirm">
+      <form method="dialog">
+        <p class="dialog_message">Are you sure?</p>
+        <div>
+          <button value="cancel">Cancel</button>
+          <button value="confirm">Confirm</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
