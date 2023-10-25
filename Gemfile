@@ -66,6 +66,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
+  gem 'shoulda-matchers'
 end
 
 group :development do
