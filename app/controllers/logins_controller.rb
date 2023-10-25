@@ -1,5 +1,6 @@
 class LoginsController < ApplicationController
   include FindsUserByAuthToken
+  include AuthenticateSession
   skip_before_action :must_login
 
   def authenticate_user
@@ -9,13 +10,8 @@ class LoginsController < ApplicationController
     redirect_to login_path, alert: t(".unconfirmed_token") and return unless user.confirmed?
 
     authenticate_session(user)
-  end
 
-  def authenticate_session(user)
-    reset_session
-    session[:user_id] = user.id
-    flash[:notice] = t(".authenticate_session.success")
-    redirect_to users_path
+    redirect_to users_path, notice: t(".authenticate_session")
   end
 
   def logout
