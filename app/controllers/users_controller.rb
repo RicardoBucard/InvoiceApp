@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ReturnsIfEmailAlreadyExists
   skip_before_action :must_login
  
   def confirm_email
@@ -9,6 +10,10 @@ class UsersController < ApplicationController
     else
       redirect_to register_path, alert: t(".user_not_found")
     end
+  end
+
+  def email_already_exists
+    render json: { email_already_exists: email_already_exists?(params[:email]) }
   end
 
   private

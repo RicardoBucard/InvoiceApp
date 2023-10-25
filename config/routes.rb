@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'email_already_exists', to: 'users#email_already_exists'
   resources :users, only: %i[create new] do
     member do
       get :confirm_email
