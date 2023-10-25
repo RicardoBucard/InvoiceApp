@@ -1,3 +1,5 @@
-= simple_form_for @user, url: register_path, method: :post do |f|
-  = f.input :email, label: t(".email_label"), required: true
-  = f.submit t(".submit_button")
+= simple_form_for @user, url: register_path, html: { class: 'register_form' } do |f|
+  = f.input :email, label: t(".email_label"), required: true, id: 'email_input'
+  = f.submit t(".submit_button"), id: 'submit_button'
+
+= javascript_import_module_tag "check_existing_email"
