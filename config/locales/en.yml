@@ -5,8 +5,7 @@ en:
 
   logins:
     authenticate_user:
-      authenticate_session:
-        success: "You've logged in successfully, welcome!"
+      authenticate_session: "You've logged in successfully, welcome!"
       auth_token_not_found: "Invalid token! Please check you email for the correct one"
       unconfirmed_token: "Please activate your account by following the instructions in the account confirmation email you received to proceed"
     logout:
