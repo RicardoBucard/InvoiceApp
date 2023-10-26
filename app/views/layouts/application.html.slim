@@ -1,7 +1,6 @@
 html
   head
-    title
-      DesafioNomad
+    title Invoice App
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
@@ -9,17 +8,30 @@ html
     = javascript_importmap_tags
     = yield(:head)
   body
-    - if @current_user
-      = link_to 'Sign Out', logout_path,  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
-    = render 'shared/flash'
-    = yield
+    .navbar_container
+      span Invoice App
+      nav.navbar.navbar-expand-lg.navbar-light
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            .d-flex.align-items-center
+              .navbar_button_group
+                li.nav-item.active
+                  = link_to 'Generate Auth Token', register_path, class: "ml-1 mr-2 btn btn-outline-dark"
+                li.nav-item.active
+                - if @current_user
+                    = link_to 'Sign Out', logout_path,  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-danger"
+                - else
+                    = link_to 'Log in', login_path, class: 'nav-link', class: "btn btn-outline-dark"
+    .container.border-0.rounded.
+      = render 'shared/flash'
+      = yield
     
-    dialog#turbo-confirm
+    dialog#turbo-confirm.border.rounded
       form[method="dialog"]
         p.dialog_message
           | Are you sure?
         div
-          button[value="cancel"]
+          button.dialog_btn.btn.btn-outline-secondary[value="cancel"]
             | Cancel
-          button[value="confirm"]
+          button.btn.btn-outline-dark[value="confirm"]
             | Confirm
