@@ -2,6 +2,10 @@ en:
   activerecord:
     errors:
       messages:
+
+  application:
+    must_login_error: "Please login to access invoices"
+
   invoices:
     new:
       back: "Back"
