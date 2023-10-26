@@ -2,6 +2,16 @@ en:
   activerecord:
     errors:
       messages:
+  invoices:
+    new:
+      back: "Back"
+      charged_company: "Invoice Charged Company"
+      emitter_company: "Invoice Emitter Company"
+      emails: "Emails"
+      invoice_date: "Invoice Date"
+      invoice_number: "Invoice Number"
+      invoice_value: "Invoice Total Value"
+      submit_button: "Create Invoice"
 
   logins:
     authenticate_user:

@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Invoices
+
+#invoices
+  - @invoices.each do |invoice|
+    == render invoice
+    p
+      = link_to "Show this invoice", invoice
+
+= link_to "New invoice", new_invoice_path

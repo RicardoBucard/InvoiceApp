@@ -1,0 +1,37 @@
+.page-header
+  h2 New invoice
+
+= simple_form_for @invoice, url: invoices_path do |f|
+  .form_container
+    .form_container_row
+      .form_group
+        - if @invoice.errors.any?
+          div style="color: red"
+            h2 = "#{pluralize(@invoice.errors.count, "error")} prohibited this invoice from being saved:"
+            ul
+              - @invoice.errors.each do |error|
+                li = error.full_message
+        .form-group
+          = f.label t(".invoice_number")
+          = f.input :invoice_number, input_html: { class: 'form-control', required: true }
+        .form-group
+          = f.label t(".invoice_date")
+          = f.input :invoice_date, input_html: { class: 'form-control', required: true, id: 'date_input' }
+        .form-group
+          = f.label t(".emitter_company")
+          = f.input :emitter_company, input_html: { class: 'form-control', required: true }
+        .form-group
+          = f.label t(".charged_company")
+          = f.input :charged_company, input_html: { class: 'form-control', required: true }
+        .form-group
+          = f.label t(".invoice_value")
+          = f.input :invoice_value, input_html: { class: 'form-control', required: true }
+        .form-group
+          = f.label t(".emails")
+          = f.input :emails, input_html: { class: 'form-control', required: true }
+      .buttons_row
+        = f.submit t(".submit_button"), class: 'btn btn-dark'
+
+        = link_to t(".back"), invoices_path, class: 'btn_back btn btn-outline-dark'
+
+= javascript_import_module_tag "date_input_mask"

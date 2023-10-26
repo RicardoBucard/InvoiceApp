@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invoices
   root to: 'pages#home'
   
   post 'email_already_exists', to: 'users#email_already_exists'
