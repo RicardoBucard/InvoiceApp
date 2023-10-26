@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
   config.label_text                      = lambda { |label, _, _| label }
   config.error_notification_tag          = :div
   config.error_notification_class        = "error_notification"
-  config.browser_validations             = false
+  config.browser_validations             = true
   config.boolean_style                   = :nested
   config.boolean_label_class             = "form_checkbox-label"
 end

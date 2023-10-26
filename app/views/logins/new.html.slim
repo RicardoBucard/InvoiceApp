@@ -1,3 +1,10 @@
+.page-header
+  h2 Token Authentication
+
 = simple_form_for :new, url: {controller: 'logins', action: 'new'} do |f|
-  = f.input :auth_token, label: t(".token_label"), required: true
-  = f.submit t(".submit_button")
+  .form_container
+    .form_container_row
+      .form_group
+        = f.label  t(".token_label")
+        = f.input :auth_token, input_html: { class: 'form-control', required: true }
+      = f.submit t(".submit_button"), class: 'btn btn-outline-dark'
