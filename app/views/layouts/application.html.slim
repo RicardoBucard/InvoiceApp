@@ -15,12 +15,17 @@ html
           ul.navbar-nav
             .d-flex.align-items-center
               .navbar_button_group
-                li.nav-item.active
-                  = link_to 'Generate Auth Token', register_path, class: "ml-1 mr-2 btn btn-outline-dark"
-                li.nav-item.active
                 - if @current_user
+                  li.nav-item.active
+                    = link_to 'List invoices', invoices_path, class: "ml-1 mr-2 btn btn-outline-dark"
+                  li.nav-item.active
+                    = link_to 'Emit Invoice', new_invoice_path, class: "ml-1 mr-2 btn btn-outline-dark"
+                  li.nav-item.active
                     = link_to 'Sign Out', logout_path,  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-danger"
                 - else
+                  li.nav-item.active
+                    = link_to 'Generate Auth Token', register_path, class: "ml-1 mr-2 btn btn-outline-dark"
+                  li.nav-item.active
                     = link_to 'Log in', login_path, class: 'nav-link', class: "btn btn-outline-dark"
     = render 'shared/flash'
     .container.border-0.rounded.
