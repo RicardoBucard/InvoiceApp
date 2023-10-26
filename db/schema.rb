@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_204817) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_052753) do
+  create_table "invoices", force: :cascade do |t|
+    t.integer "invoice_number"
+    t.string "invoice_date"
+    t.string "emitter_company"
+    t.string "charged_company"
+    t.decimal "invoice_value"
+    t.string "emails"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "auth_token"
