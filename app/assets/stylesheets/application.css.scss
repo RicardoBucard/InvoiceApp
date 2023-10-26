@@ -15,3 +15,74 @@
  */
  @import "font-awesome";
  @import "bootstrap";
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.navbar_container {
+    background-color: #FFDE00;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar_container span {
+    padding: .5em;
+}
+
+ul li {
+    padding: .5em;
+    display: inline-block;
+}
+
+.navbar_button_group {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    margin-top: 1em;
+    border-radius: .5;
+    width: 80%;
+    height: 80vh;
+    background-color: #fdfdf8;
+}
+
+.form_container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form_container_row {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5em;
+}
+
+.form_container_row .btn {
+    margin-top: 2em;
+}
+
+.form_header {
+    margin-left: 1em;
+    margin-top: 3em;
+}
+
+.dialog_btn {
+    margin-right: 1em;
+}
