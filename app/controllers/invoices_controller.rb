@@ -2,8 +2,7 @@ class InvoicesController < ApplicationController
   include Email::SendsInvoiceEmail
   include Invoice::DownloadsInvoicePdf
   before_action :set_invoice, only: %i[ show download_pdf new_invoice_email sends_new_invoice_email ]
-  
-  before_action :set_invoice, only: %i[ show download_pdf new_invoice_email sends_new_invoice_email ]
+  skip_before_action :must_login, only: :show
 
   has_scope :filter_invoice_date
   has_scope :filter_invoice_number
