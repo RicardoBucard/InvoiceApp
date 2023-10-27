@@ -7,6 +7,8 @@ en:
     must_login_error: "Please login to access invoices"
 
   invoices:
+    create:
+      success_message: "Invoice was successfully created and sent to the informed emails"
     new:
       back: "Back"
       charged_company: "Invoice Charged Company"
