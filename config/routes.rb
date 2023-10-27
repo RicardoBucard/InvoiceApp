@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :invoices
+  get 'download_pdf/:id', to: 'invoices#download_pdf', as: 'download_pdf'
+  resources :invoices, only: %i[create index new show ]
   root to: 'pages#home'
   
   post 'email_already_exists', to: 'users#email_already_exists'
