@@ -1,7 +1,7 @@
-module module Invoice::DownloadsInvoicePdf
+module Invoice::DownloadsInvoicePdf
   include Invoice::ReturnsInvoicePdf
 
-  def download_pdf(invoice)
+  def download_invoice_pdf(invoice)
     pdf = returns_invoice_pdf(invoice)
 
     send_data(

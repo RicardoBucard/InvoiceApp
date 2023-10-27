@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
   include Email::SendsInvoiceEmail
   include Invoice::DownloadsInvoicePdf
-  before_action :set_invoice, only: %i[ show ]
+  before_action :set_invoice, only: %i[ show download_pdf ]
 
   def index
     @invoices = Invoice.all
@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
   end
 
   def download_pdf
-    download_pdf(invoice)
+    download_invoice_pdf(@invoice)
   end
 
   def create
@@ -34,11 +34,11 @@ class InvoicesController < ApplicationController
   end
 
   private
-    def set_invoice
-      @invoice = Invoice.find(params[:id])
-    end
+  def set_invoice
+    @invoice = Invoice.find(params[:id])
+  end
 
-    def invoice_params
-      params.require(:invoice).permit(:invoice_number, :invoice_date, :emitter_company, :charged_company, :invoice_value, :emails)
-    end
+  def invoice_params
+    params.require(:invoice).permit(:invoice_number, :invoice_date, :emitter_company, :charged_company, :invoice_value, :emails)
+  end
 end
