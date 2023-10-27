@@ -8,7 +8,8 @@ module Invoice::ReturnsInvoicePdf
       pdf.font_size 16
       invoice.attributes.each do |attr_name, attr_value|
         unless ['id', 'created_at', 'updated_at'].include?(attr_name)
-          pdf.text "#{attr_name.titleize}: #{attr_value}", align: :center
+          pdf.text "#{attr_name.titleize}: R$ #{attr_value.to_s.gsub('.',',')}", align: :center if attr_name == 'invoice_value'
+          pdf.text "#{attr_name.titleize}: #{attr_value}", align: :center unless attr_name == 'invoice_value'
           pdf.move_down 30
         end
       end
