@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Here is the invoice <%= @invoice.invoice_number %></h1>
+    <p><%= link_to "View Invoice", invoice_url(@invoice)%> or download the attached invoice pdf.</p>
+</html>
