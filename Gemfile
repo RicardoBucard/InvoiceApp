@@ -59,6 +59,8 @@ gem 'prawn'
 gem 'has_scope'
 
 gem 'rswag'
+
+gem 'kaminari'
 # Use Sass to process CSS
 # gem 'sassc-rails'
 
@@ -71,7 +73,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "faker"
-  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   gem 'shoulda-matchers'
 end
 
