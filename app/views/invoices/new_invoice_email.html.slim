@@ -1,0 +1,17 @@
+html
+  body
+    .page-header
+      h2 Email invoice
+    .form_container
+      .form_container_row
+        .form_group.col-lg-12
+          form[action="#{sends_new_invoice_email_path}"]
+            .form-group
+
+              label Email
+
+              input.form-control#emails[type="text" name="emails"]
+              small#passwordHelpInline.text-muted #{t(".hint")} 
+            .buttons_row
+
+              input.btn.btn-outline-dark[type="submit" value="Send Email"]

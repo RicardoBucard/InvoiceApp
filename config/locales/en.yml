@@ -7,6 +7,14 @@ en:
     must_login_error: "Please login to access invoices"
 
   invoices:
+    new_invoice_email:
+      back: "Back"
+      emails: "Emails"
+      submit_button: "Send Email"
+      hint: "Emails must be separated by commas"
+    sends_new_invoice_email:
+      new_email_sent: "Emails were sent to the informed emails"
+
     create:
       success_message: "Invoice was successfully created and sent to the informed emails"
     new:
@@ -14,6 +22,7 @@ en:
       charged_company: "Invoice Charged Company"
       emitter_company: "Invoice Emitter Company"
       emails: "Emails"
+      hint: "Emails must be separated by commas"
       invoice_date: "Invoice Date"
       invoice_number: "Invoice Number"
       invoice_value: "Invoice Total Value"

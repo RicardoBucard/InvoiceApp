@@ -1,8 +1,8 @@
 class InvoicesController < ApplicationController
   include Email::SendsInvoiceEmail
   include Invoice::DownloadsInvoicePdf
-  before_action :set_invoice, only: %i[ show download_pdf ]
-
+  before_action :set_invoice, only: %i[ show download_pdf new_invoice_email sends_new_invoice_email ]
+  
   def index
     @invoices = Invoice.all
   end
@@ -31,6 +31,14 @@ class InvoicesController < ApplicationController
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def new_invoice_email
+  end
+
+  def sends_new_invoice_email
+    sends_invoice_email(@invoice, params[:emails])
+    redirect_to invoice_url(@invoice), notice: t(".new_email_sent")
   end
 
   private

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'new_invoice_email/:id', to: 'invoices#new_invoice_email', as: 'new_invoice_email'
+  get 'sends_new_invoice_email/:id', to: 'invoices#sends_new_invoice_email', as: 'sends_new_invoice_email'
   get 'download_pdf/:id', to: 'invoices#download_pdf', as: 'download_pdf'
   resources :invoices, only: %i[create index new show ]
   root to: 'pages#home'
