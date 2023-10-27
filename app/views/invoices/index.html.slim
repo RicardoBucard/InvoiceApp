@@ -6,9 +6,15 @@ h1 Invoices
       = label_tag 'Invoice Number'
       = text_field_tag :filter_invoice_number, params[:filter_invoice_number], class: 'form-control-sm', placeholder: 'Invoice number'
       = label_tag 'Invoice Date'
-      = text_field_tag :filter_invoice_date, params[:filter_invoice_date], class: 'form-control-sm', placeholder: 'Invoice Date'
+      = text_field_tag :filter_invoice_date, params[:filter_invoice_date], class: 'form-control-sm', id: 'date_input',placeholder: 'Invoice Date'
       = button_tag 'Filter', data: {disable_with: "Filtering.."}, class: 'btn btn-sm btn-outline-dark'
 
 #invoices
-  - @invoices.each do |invoice|
-    == render invoice
+  .invoice_container
+    - if @invoices.present?
+      - @invoices.each do |invoice|
+        == render invoice
+    - else
+      h2 #{t(".invoice_query_empty")}
+
+= javascript_import_module_tag "date_input_mask"

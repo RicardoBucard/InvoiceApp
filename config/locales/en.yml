@@ -7,16 +7,10 @@ en:
     must_login_error: "Please login to access invoices"
 
   invoices:
-    new_invoice_email:
-      back: "Back"
-      emails: "Emails"
-      submit_button: "Send Email"
-      hint: "Emails must be separated by commas"
-    sends_new_invoice_email:
-      new_email_sent: "Emails were sent to the informed emails"
-
     create:
       success_message: "Invoice was successfully created and sent to the informed emails"
+    index:
+      invoice_query_empty: "No invoice matched your query"
     new:
       back: "Back"
       charged_company: "Invoice Charged Company"
@@ -27,6 +21,13 @@ en:
       invoice_number: "Invoice Number"
       invoice_value: "Invoice Total Value"
       submit_button: "Create Invoice"
+    new_invoice_email:
+      back: "Back"
+      emails: "Emails"
+      submit_button: "Send Email"
+      hint: "Emails must be separated by commas"
+    sends_new_invoice_email:
+      new_email_sent: "Emails were sent to the informed emails"
 
   logins:
     login:
