@@ -1,0 +1,260 @@
+openapi: "3.0.0"
+info:
+    version: "1.0.0"
+    title: "Invoice App API"
+    description: Invoices creation, visualization app that allows them to be sent by email
+
+paths:
+    /invoices/{invoiceId}:
+        parameters:
+            - name: invoiceId
+              description: The unique identifier of the invoice
+              in: path
+              required: true
+              schema:
+                  $ref: "#/components/schemas/InvoiceId"
+        get:
+            summary: Read an invoice
+            responses:
+                "200":
+                    description: The invoice corresponding to the provided `invoiceId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Invoice"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
+                "422":
+                    $ref: "#/components/responses/UnprocessedEntity"
+    /invoices/:
+        get:
+            summary: Returns all invoices
+            responses:
+                "200":
+                    description: The list of invoices
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ArrayOfInvoices"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "404":
+                    $ref: "#/components/responses/NotFound"
+                "422":
+                    $ref: "#/components/responses/UnprocessedEntity"
+        post:
+            summary: Creates new invoice
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Invoice"
+                    text/plain:
+                        schema:
+                            type: string
+            responses:
+                "201":
+                    description: "Created a new Invoice"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Invoice"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "422":
+                    $ref: "#/components/responses/UnprocessedEntity"
+    /invoices/send_invoices_to_emails/{invoiceId}:
+        post:
+            parameters:
+                - name: invoiceId
+                  description: The unique identifier of the invoice
+                  in: path
+                  required: true
+                  schema:
+                      $ref: "#/components/schemas/InvoiceId"
+            summary: Emails all addresses provided the invoice
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Emails"
+                    text/plain:
+                        schema:
+                            type: string
+            responses:
+                "200":
+                    $ref: "#/components/responses/EmailSent"
+                "401":
+                    $ref: "#/components/responses/Unauthorized"
+                "422":
+                    $ref: "#/components/responses/UnprocessedEntity"
+
+components:
+    responses:
+        NotFound:
+            description: Response when API can't find what was requested
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/NotFoundError"
+        Unauthorized:
+            description: Response when user tries to access method without logging in
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/UnauthorizedError"
+        UnprocessedEntity:
+            description: Response when the request's sintax and content were correct but couldn't complete the request
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/UnprocessedEntityError"
+        EmailSent:
+            description: Response when the invoice email is sent
+            content:
+                application/json:
+                    schema:
+                        $ref: "#/components/schemas/EmailSentMessage"
+
+    schemas:
+        ArrayOfInvoices:
+            type: object
+            properties:
+                invoiceNumber:
+                    type: number
+                invoiceDate:
+                    type: string
+                emitterCompany:
+                    type: string
+                chargedCompany:
+                    type: string
+                invoiceValue:
+                    type: number
+                emails:
+                    type: string
+            example:
+                - invoiceNumber: 91782983
+                  invoiceDate: "02/08/2023"
+                  emitterCompany: Abc LTDA.
+                  chargedCompany: Ghi S/A
+                  invoiceValue: 6870.98
+                  emails: abc@abc.com.br,ghi@ghi.com.br
+                - invoiceNumber: 57159918
+                  invoiceDate: "19/11/2022"
+                  emitterCompany: Pde Inc.
+                  chargedCompany: Mta ltd.
+                  invoiceValue: 6870.98
+                  emails: pde@pde.com.br,mta@mta.com.br
+        Emails:
+            type: object
+            required:
+                - emails
+            properties:
+                emails:
+                    type: string
+            example:
+                emails: abc@abc.com.br,ghi@ghi.com.br
+        InvoiceId:
+            description: The unique identifier of a invoice
+            type: string
+        Invoice:
+            type: object
+            required:
+                - invoiceNumber
+                - invoiceDate
+                - emitterCompany
+                - chargedCompany
+                - invoiceValue
+                - emails
+            properties:
+                invoiceNumber:
+                    type: number
+                invoiceDate:
+                    type: string
+                emitterCompany:
+                    type: string
+                chargedCompany:
+                    type: string
+                invoiceValue:
+                    type: number
+                emails:
+                    type: string
+            example:
+                invoiceNumber: 91782983
+                invoiceDate: "02/08/2023"
+                emitterCompany: Abc LTDA.
+                chargedCompany: Ghi S/A
+                invoiceValue: 6870.98
+                emails: abc@abc.com.br,ghi@ghi.com.br
+        UnauthorizedError:
+            type: object
+            properties:
+                code:
+                    description: HTTP response code
+                    type: number
+                message:
+                    description: Error message
+                    type: string
+            required:
+                - code
+                - message
+            example:
+                code: 401
+                message: User was not authenticated
+        UnprocessedEntityError:
+            type: object
+            properties:
+                code:
+                    description: HTTP response code
+                    type: number
+                message:
+                    description: Error message
+                    type: string
+            required:
+                - code
+                - message
+            example:
+                code: 422
+                message: Could not complete the request
+        NotFoundError:
+            type: object
+            properties:
+                code:
+                    description: HTTP response code
+                    type: number
+                message:
+                    description: Error message
+                    type: string
+            required:
+                - code
+                - message
+            example:
+                code: 404
+                message: Requested data was not found
+        EmailSentMessage:
+            type: object
+            properties:
+                code:
+                    description: HTTP response code
+                    type: number
+                message:
+                    description: Email sent success message
+                    type: string
+            required:
+                - code
+                - message
+            example:
+                code: 200
+                message: Email was sent to the companies succesfully
+
+    securitySchemes:
+        ApiKey:
+            type: apiKey
+            in: header
+            name: X-Api-Key
+security:
+    - ApiKey: "8d7c954db94aecb9cb73ed2595a6e956"
