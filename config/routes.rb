@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'register', to: 'registers#create'
   
   get 'login', to: 'logins#new'
-  post 'login', to: 'logins#authenticate_user'
+  post 'login', to: 'logins#login'
   delete 'logout', to: 'logins#logout'
   resources :logins, only: %i[new create]
 end
