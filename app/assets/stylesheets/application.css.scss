@@ -22,6 +22,7 @@ html, body {
 
 body {
     margin: 0;
+    background-color: #fffad9;
 }
 
 .navbar_container {
@@ -30,6 +31,7 @@ body {
     flex-direction: row;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 
 .navbar_container span {
@@ -52,7 +54,39 @@ ul li {
     border-radius: .5;
     width: 80%;
     height: 80vh;
-    background-color: #fdfdf8;
+    background-color: #fffad1;
+}
+
+.invoice_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    border-radius: .5;
+    width: 100%;
+    background-color: #fffad1;
+}
+
+.invoice_show_container {
+    margin-top: 1em;
+    border-radius: .5;
+    width: 100%;
+    background-color: #fffad1;
+}
+
+.invoice_attributes_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.invoice_buttons {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .form_container {
@@ -93,4 +127,16 @@ ul li {
 
 .buttons_row {
     display: inline-block;
+}
+.filter_form {
+    display: flex;
+    align-items: center;
+}
+
+.filter_form input{
+    margin-right: .5em;
+}
+
+.filter_form label{
+    margin-right: .5em;
 }

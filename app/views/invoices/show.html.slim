@@ -1,10 +1,26 @@
-p style="color: green" = notice
+.page-header
+  h2 Invoice Number #{@invoice.invoice_number}
+.invoice_show_container
+  .invoice_buttons
+    = link_to "Download PDF", download_pdf_path(@invoice.id), class: 'btn btn-sm btn-outline-dark'
+    = link_to "Email", new_invoice_email_url(@invoice.id), class: 'btn btn-sm btn-outline-dark'
+  .invoice_attributes_container
+    p
+      strong Invoice date: 
+      = @invoice.invoice_date
+    p
+      strong Emitter company: 
+      = @invoice.emitter_company
+    p
+      strong Charged company: 
+      = @invoice.charged_company
+    p
+      strong Invoice value: 
+      = "#{number_to_currency(@invoice.invoice_value, unit: "R$", separator: ",", delimiter: "")}"
+    p
+      strong Emails: 
+      = @invoice.emails
 
-== render @invoice
+    div
+      =< link_to "Back to invoices", invoices_path, class: 'btn btn-sm btn-outline-dark'
 
-div
-  => link_to "Edit this invoice", edit_invoice_path(@invoice)
-  '|
-  =< link_to "Back to invoices", invoices_path
-
-  = button_to "Destroy this invoice", @invoice, method: :delete
