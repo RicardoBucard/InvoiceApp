@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  include Email::SendsInvoiceEmail
+  include Invoice::DownloadsInvoicePdf
   before_action :set_invoice, only: %i[ show ]
 
   def index
@@ -12,12 +14,17 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
   end
 
+  def download_pdf
+    download_pdf(invoice)
+  end
+
   def create
     @invoice = Invoice.new(invoice_params)
-
+    
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to invoice_url(@invoice), notice: "Invoice was successfully created and sent to the informed emails" }
+        sends_invoice_email(@invoice)
+        format.html { redirect_to invoice_url(@invoice), notice: t(".success_message") }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new, status: :unprocessable_entity }
