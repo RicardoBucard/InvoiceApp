@@ -1,11 +1,16 @@
-p style="color: green" = notice
-
 h1 Invoices
+
+= form_tag invoices_path(params[:query]), method: :get, class: 'form-inline' do
+  .form-group
+    .filter_form
+      = label_tag 'Invoice Number'
+      = text_field_tag :filter_invoice_number, params[:filter_invoice_number], class: 'form-control-sm', placeholder: 'Invoice number'
+      = label_tag 'Invoice Date'
+      = text_field_tag :filter_invoice_date, params[:filter_invoice_date], class: 'form-control-sm', placeholder: 'Invoice Date'
+      = button_tag 'Filter', data: {disable_with: "Filtering.."}, class: 'btn btn-sm btn-outline-dark'
 
 #invoices
   - @invoices.each do |invoice|
     == render invoice
     p
       = link_to "Show this invoice", invoice
-
-= link_to "New invoice", new_invoice_path

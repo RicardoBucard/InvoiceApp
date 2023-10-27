@@ -3,8 +3,13 @@ class InvoicesController < ApplicationController
   include Invoice::DownloadsInvoicePdf
   before_action :set_invoice, only: %i[ show download_pdf new_invoice_email sends_new_invoice_email ]
   
+  before_action :set_invoice, only: %i[ show download_pdf new_invoice_email sends_new_invoice_email ]
+
+  has_scope :filter_invoice_date
+  has_scope :filter_invoice_number
+
   def index
-    @invoices = Invoice.all
+    @invoices = apply_scopes(Invoice).all
   end
 
   def show
