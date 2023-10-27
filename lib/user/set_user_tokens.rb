@@ -1,5 +1,5 @@
-module SetUserTokens
-  include GeneratesUserToken
+module User::SetUserTokens
+  include User::GeneratesUserToken
 
   def set_user_tokens(user)
     auth_token = generates_token

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  include ReturnsIfEmailAlreadyExists
-  include ActivatesEmailConfirmToken
+  include User::ReturnsIfEmailAlreadyExists
+  include User::ActivatesEmailConfirmToken
   skip_before_action :must_login
  
   def confirm_email

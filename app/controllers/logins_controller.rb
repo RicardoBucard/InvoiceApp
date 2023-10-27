@@ -1,6 +1,6 @@
 class LoginsController < ApplicationController
-  include LoginUser
-  include LogoutUser
+  include Session::LoginUser
+  include Session::LogoutUser
   skip_before_action :must_login
 
   def login

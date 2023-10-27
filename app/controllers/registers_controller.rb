@@ -1,5 +1,5 @@
 class RegistersController < ApplicationController
-  include SendsConfirmationEmail
+  include Email::SendsConfirmationEmail
   skip_before_action :must_login
 
   def new

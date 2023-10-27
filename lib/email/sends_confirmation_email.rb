@@ -1,6 +1,6 @@
-module SendsConfirmationEmail
-  include FindsOrCreatesNewUser
-  include SetUserTokens
+module Email::SendsConfirmationEmail
+  include User::FindsOrCreatesNewUser
+  include User::SetUserTokens
 
   def sends_confirmation_email(email)
     return unless (user = find_or_create(email))

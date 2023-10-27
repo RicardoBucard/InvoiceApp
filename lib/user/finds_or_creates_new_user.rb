@@ -1,4 +1,4 @@
-module FindsOrCreatesNewUser
+module User::FindsOrCreatesNewUser
   def find_or_create(email)
     user = User.find_by(email: email.strip.downcase)
 

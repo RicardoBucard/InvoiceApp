@@ -1,4 +1,4 @@
-module AuthenticateSession
+module Session::AuthenticateSession
   def authenticate_session(user)
     reset_session
     session[:user_id] = user.id

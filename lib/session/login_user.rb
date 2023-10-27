@@ -1,6 +1,6 @@
-module LoginUser
-  include FindsUserByAuthToken
-  include AuthenticateSession
+module Session::LoginUser
+  include User::FindsUserByAuthToken
+  include Session::AuthenticateSession
 
   def login_user(auth_token)
     user = find_user_by_auth_token(auth_token)
