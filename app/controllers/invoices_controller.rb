@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
   has_scope :filter_invoice_number
 
   def index
-    @invoices = apply_scopes(Invoice).all
+    @invoices = apply_scopes(Invoice).all.page(params[:p]).per(5)
   end
 
   def show
@@ -48,6 +48,10 @@ class InvoicesController < ApplicationController
   private
   def set_invoice
     @invoice = Invoice.find(params[:id])
+  end
+
+  def paginate_params
+    params.permit(:page, :per_page)
   end
 
   def invoice_params

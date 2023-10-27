@@ -16,5 +16,5 @@ h1 Invoices
         == render invoice
     - else
       h2 #{t(".invoice_query_empty")}
-
+    = paginate @invoices
 = javascript_import_module_tag "date_input_mask"
