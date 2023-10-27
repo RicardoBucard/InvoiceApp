@@ -55,6 +55,8 @@ gem "bootstrap"
 gem "sassc-rails"
 
 gem 'prawn'
+
+gem 'has_scope'
 # Use Sass to process CSS
 # gem 'sassc-rails'
 
