@@ -57,6 +57,8 @@ gem "sassc-rails"
 gem 'prawn'
 
 gem 'has_scope'
+
+gem 'rswag'
 # Use Sass to process CSS
 # gem 'sassc-rails'
 
