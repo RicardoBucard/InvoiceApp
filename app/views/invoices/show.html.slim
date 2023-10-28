@@ -3,7 +3,8 @@
 .invoice_show_container
   .invoice_buttons
     = link_to "Download PDF", download_pdf_path(@invoice.id), class: 'btn btn-sm btn-outline-dark'
-    = link_to "Email", new_invoice_email_url(@invoice.id), class: 'btn btn-sm btn-outline-dark'
+    -if @current_user
+      = link_to "Email", new_invoice_email_url(@invoice.id), class: 'btn btn-sm btn-outline-dark'
   .invoice_attributes_container
     p
       strong Invoice date: 

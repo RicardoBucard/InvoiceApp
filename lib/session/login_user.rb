@@ -10,6 +10,6 @@ module Session::LoginUser
     
     authenticate_session(user)
 
-    redirect_to users_path, notice: t("logins.login.authenticate_session")
+    redirect_to invoices_path, notice: t("logins.login.authenticate_session")
   end
 end
