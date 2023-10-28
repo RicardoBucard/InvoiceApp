@@ -53,7 +53,7 @@ Na parte da aparência da interface de usuário, usei  o `bootstrap`, que necess
 
 Para a autenticação, como o requisito era ser feito através de um *token* enviado por email para ser confirmado, não usei a opção mais conhecida, o `devise`. Pesquisando como fazer autenticação do zero, vi que o `bcrypt` poderia ser usada para criptografia e segurança ao esconder tokens enviados como parâmetros.
 
-Outro requisito era o envio de emails com arquivos anexados e, para gerar estes arquivos, escolhi a gema `prawn` pela sua capacidade de criar pdfs estilizados de forma rápida. Esta gema percorre um grid que representa a página de um arquivo pdf e é necessário informar exatamente onde cada texto será inserido e como. Em uma versão futura desta API, faria melhorias visuais e de formatação para os arquivos gerados, mas seria necessário estudar mais a gema.g
+Outro requisito era o envio de emails com arquivos anexados e, para gerar estes arquivos, escolhi a gema `prawn` pela sua capacidade de criar pdfs estilizados de forma rápida. Esta gema percorre um grid que representa a página de um arquivo pdf e é necessário informar exatamente onde cada texto será inserido e como. Em uma versão futura desta API, faria melhorias visuais e de formatação para os arquivos gerados, mas seria necessário estudar mais a gema.
 
 A gema `rswag` adiciona o Swagger ao Rails e foi usada para gerar uma apresentação visual para a documentação da API, mencionada no início do arquivo.
 
