@@ -63,6 +63,8 @@ gem 'rswag'
 gem 'kaminari'
 
 gem 'yard'
+gem 'yard-restful'
+gem 'redcarpet'
 # Use Sass to process CSS
 # gem 'sassc-rails'
 

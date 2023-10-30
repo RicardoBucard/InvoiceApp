@@ -212,6 +212,7 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    redcarpet (3.6.0)
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
@@ -305,7 +306,9 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.34)
+    yard (0.8.7.6)
+    yard-restful (1.2.4)
+      yard (~> 0.8.3)
     zeitwerk (2.6.12)
 
 PLATFORMS
@@ -329,6 +332,7 @@ DEPENDENCIES
   prawn
   puma (~> 5.0)
   rails (~> 7.0.8)
+  redcarpet
   rspec-rails
   rswag
   sassc-rails
@@ -343,6 +347,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   yard
+  yard-restful
 
 RUBY VERSION
    ruby 3.0.6p216
