@@ -1,16 +1,10 @@
 class UsersController < ApplicationController
   include User::ReturnsIfEmailAlreadyExists
-  include User::ActivatesEmailConfirmToken
+  include User::ConfirmsEmailToken
   skip_before_action :must_login
  
   def confirm_email
-    user = User.find(params[:id])
-    if user
-      activate_email_confirm_token(user)
-      redirect_to login_path, notice: t(".confirm_success")
-    else
-      redirect_to register_path, alert: t(".user_not_found")
-    end
+    confirms_email(params[:id])
   end
 
   def email_already_exists
