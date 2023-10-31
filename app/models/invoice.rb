@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id              :integer          not null, primary key
+#  charged_company :string
+#  emails          :string
+#  emitter_company :string
+#  invoice_date    :string
+#  invoice_number  :integer
+#  invoice_value   :decimal(, )
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class Invoice < ApplicationRecord
   validates_presence_of :invoice_number, :invoice_date, :emitter_company, :charged_company, :invoice_value, :emails
   validates_uniqueness_of :invoice_number

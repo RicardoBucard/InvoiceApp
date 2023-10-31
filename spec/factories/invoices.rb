@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id              :integer          not null, primary key
+#  charged_company :string
+#  emails          :string
+#  emitter_company :string
+#  invoice_date    :string
+#  invoice_number  :integer
+#  invoice_value   :decimal(, )
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 FactoryBot.define do
   factory :valid_invoice, class: Invoice do
     invoice_number { 1 }

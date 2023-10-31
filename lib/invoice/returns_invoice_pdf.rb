@@ -1,4 +1,14 @@
 module Invoice::ReturnsInvoicePdf
+  
+  # Creates and returns a PDF representation for a provided invoice.
+  #
+  # This method checks if the provided invoice is present. If an invoice is provided, it generates a PDF file
+  # containing information based on the attributes of the invoice. It uses the Prawn gem to construct the PDF,
+  # detailing attributes of the invoice.
+  #
+  # @param [Invoice] invoice The invoice object used to create the PDF representation
+  #
+  # @return [PDF, nil] The generated PDF document or nil if the invoice is not present
   def returns_invoice_pdf(invoice)
     if invoice.present?
       pdf = Prawn::Document.new
