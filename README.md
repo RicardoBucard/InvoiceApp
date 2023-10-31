@@ -20,7 +20,7 @@ A instalação do `mailhog` pode ser feita seguindo [este tutorial](https://www.
 Caso seja a primeira vez usando a API:
 1. Execute `bundle install` para instalar as dependências do projeto
 2. Para subir o servidor, execute `rails s`
-3. Abra um novo terminal e execute `mailhog`, para subir o servidor local de envio de emails local. Para ver os emails que são gerados, [acesse](https:localhost:8025).
+3. Abra um novo terminal e execute `mailhog`, para subir o servidor local de envio de emails local. Para ver os emails que são gerados, [acesse](http://localhost:8025).
 
 Nas próximas vezes que for subir o servidor da API:
 1. Execute `rails s`
@@ -28,6 +28,10 @@ Nas próximas vezes que for subir o servidor da API:
  
 Para rodar testes:
 1. Execute `rspec`
+
+Para acessar documentação dos módulos, controllers e models:
+1. Execute `yard server`
+2. [Acesse](http://localhost:8808).
 
 ## Sobre o projeto
 
@@ -68,3 +72,8 @@ Com a modularização feita neste código, a manutenção é facilitada, já que
 - Utilização do docker, facilitando instalação do projeto e garantindo que ele funcione da mesma forma em todo ambiente. O Docker foi implementado, porém, ao testar em ambientes e sistema operacionais diferentes, tive resultados diferentes. Desta forma, seria melhor trabalhar mais na configuração do Docker e decidi não subir esta versão.
 - Melhorar a cobertura de testes do sistema, com testes de integração também
 - Melhorar o *template* do pdf da invoice gerada.
+
+### Updates
+- Refactor do modelo de usuário removendo método desnecessário
+- Instalação da gema Yard, para documentação do aplicativo
+- Documentação dos métodos do sistema
